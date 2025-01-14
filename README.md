@@ -39,6 +39,20 @@ EmoTa/
 ## Purpose:
 EmoTa aims to facilitate research in **Speech Emotion Recognition (SER)** for the Tamil language, offering a balanced and diverse representation of emotional expressions from native Tamil speakers. It is released as open-access to support further exploration of Tamil language processing.
 
+---
+
+Markdown in most README files doesn't directly support CSS or HTML flexbox styling out of the box because platforms like GitHub strip out unsupported styles for security and rendering consistency. However, if you're looking for a way to create a similar effect using plain Markdown, here's a practical approach:
+
+---
+
+### Contact
+
+| **Name**                     | **Email**                                       | **LinkedIn**                                         |
+|------------------------------|------------------------------------------------|----------------------------------------------------|
+| Jubeerathan Thevakumar       | [jubeerathan.20@cse.mrt.ac.lk](mailto:jubeerathan.20@cse.mrt.ac.lk) | [here](https://lk.linkedin.com/in/jubeerathan-thevakumar-87b9b8255) |
+| Luxshan Thavarasa            | [luxshan.20@cse.mrt.ac.lk](mailto:luxshan.20@cse.mrt.ac.lk)       | [here](https://linkedin.com/in/lux-thavarasa)          |
+| Thanikan Sivatheepan         | [thanikan.20@cse.mrt.ac.lk](mailto:thanikan.20@cse.mrt.ac.lk)     | [here](https://lk.linkedin.com/in/sthanikan2000)      |
+| Uthayasanker Thayasivam*      | [rtuthaya@cse.mrt.ac.lk](mailto:rtuthaya@cse.mrt.ac.lk)           | [here](https://lk.linkedin.com/in/rtuthaya) |
 
 ----
 [Dataset Access](https://rtuthaya.staff.uom.lk/resources/dataset/43)
