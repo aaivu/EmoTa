@@ -38,3 +38,7 @@ EmoTa/
 
 ## Purpose:
 EmoTa aims to facilitate research in **Speech Emotion Recognition (SER)** for the Tamil language, offering a balanced and diverse representation of emotional expressions from native Tamil speakers. It is released as open-access to support further exploration of Tamil language processing.
+
+
+----
+[Dataset Access](https://rtuthaya.staff.uom.lk/resources/dataset/fyp)
