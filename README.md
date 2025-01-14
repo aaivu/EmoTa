@@ -16,6 +16,8 @@ Tamil Emotional Speech Dataset is a collection of recordings in Sri Lankan Tamil
 
 **EmoTa** is the first emotional speech dataset in Tamil, designed to reflect the linguistic diversity of Sri Lankan Tamil speakers. It includes 936 utterances from 22 native Tamil speakers (11 male, 11 female), each articulating 19 semantically neutral sentences across five primary emotions: **Anger**, **Happiness**, **Sadness**, **Fear**, and **Neutrality**.
 
+![Speaker Distribution](https://raw.githubusercontent.com/aaivu/EmoTa/main/meta/speaker_distribution.png)
+
 ## Key Features:
 - **Speakers**: 22 native Tamil speakers (11 male, 11 female)
 - **Emotions**: Anger, Happiness, Sadness, Fear, Neutrality
@@ -38,10 +40,6 @@ EmoTa/
 
 ## Purpose:
 EmoTa aims to facilitate research in **Speech Emotion Recognition (SER)** for the Tamil language, offering a balanced and diverse representation of emotional expressions from native Tamil speakers. It is released as open-access to support further exploration of Tamil language processing.
-
----
-
-Markdown in most README files doesn't directly support CSS or HTML flexbox styling out of the box because platforms like GitHub strip out unsupported styles for security and rendering consistency. However, if you're looking for a way to create a similar effect using plain Markdown, here's a practical approach:
 
 ---
 
