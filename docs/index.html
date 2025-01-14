@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="EmoTa Tamil Emotional Speech Dataset is a comprehensive collection for speech and emotion recognition research, showcasing emotional diversity in Sri Lankan Tamil.">
+    <meta name="description" content="EmoTa Tamil Emotional Speech Dataset is a comprehensive collection for speech and emotion recognition research, showcasing linguistic and emotional diversity in Sri Lankan Tamil.">
     <meta name="keywords" content="EmoTa, Tamil Speech Dataset, Emotional Speech, Sri Lankan Tamil, Speech Emotion Recognition, Linguistic Diversity">
     <meta name="author" content="Jubeerathan Thevakumar, Luxshan Thavarasa, Thanikan Sivatheepan, Uthayasanker Thayasivam">
     <meta property="og:title" content="EmoTa Tamil Emotional Speech Dataset">
@@ -15,7 +15,6 @@
     <meta name="twitter:title" content="EmoTa Tamil Emotional Speech Dataset">
     <meta name="twitter:description" content="Discover EmoTa, a pioneering Tamil emotional speech dataset for advanced speech emotion recognition research.">
     <meta name="twitter:image" content="https://via.placeholder.com/1200x630.png?text=EmoTa+Dataset">
-    <meta name="google-site-verification" content="vJ_8_GXQXpYoFpEnwPu_CdkGLjqzwp9DWGHrlCsLHNI" />
     <title>EmoTa Dataset</title>
     <style>
         body {
@@ -57,20 +56,38 @@
         a:hover {
             text-decoration: underline;
         }
-        table {
-            width: 100%;
-            border-collapse: collapse;
+        /* Flexbox layout for cards */
+        .contact-cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .contact-card {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 220px;
+            max-width: 100%;
+        }
+        .contact-card h3 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
+        .contact-card a {
+            display: block;
             margin-top: 10px;
+            color: #1d72b8;
+            text-decoration: none;
         }
-        table, th, td {
-            border: 1px solid #ddd;
+        .contact-card a:hover {
+            text-decoration: underline;
         }
-        th, td {
-            padding: 8px;
-            text-align: left;
-        }
-        th {
-            background-color: #d9e4f5;
+        .contact-card .linkedin-icon {
+            font-size: 24px;
+            color: #0e76a8;
         }
     </style>
 </head>
@@ -82,7 +99,7 @@
         <section>
             <h2>Overview</h2>
             <p>The <strong>EmoTa Tamil Emotional Speech Dataset</strong> is a collection of recordings in Sri Lankan Tamil, representing distinct dialects from the northern, eastern, western, and central provinces. It is designed for research in speech and emotion recognition.</p>
-            <p><a href="https://github.com/aaivu/EmoTa" target="_blank">GitHub Repository</a> | <a href="https://github.com/aaivu/EmoTa/blob/main/LICENSE.txt" target="_blank">License</a> | <a href="https://github.com/aaivu/EmoTa/blob/main/EmoTa%20Dataset%20Usage%20Agreement%20Form.pdf" target="_blank">Usage Agreement</a> | <a href="https://rtuthaya.staff.uom.lk/resources/dataset/43" target="_blank">Dataset Access</a></p>
+            <p><a href="https://github.com/aaivu/EmoTa" target="_blank">GitHub Repository</a> | <a href="https://github.com/aaivu/EmoTa/blob/main/LICENSE.txt" target="_blank">License</a> | <a href="https://github.com/aaivu/EmoTa/blob/main/EmoTa%20Dataset%20Usage%20Agreement%20Form.pdf" target="_blank">Usage Agreement</a></p>
         </section>
 
         <section>
@@ -111,37 +128,28 @@ EmoTa/
 
         <section>
             <h2>Contact</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>LinkedIn</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Jubeerathan Thevakumar</td>
-                        <td>jubeerathan.20@cse.mrt.ac.lk</td>
-                        <td><a href="https://lk.linkedin.com/in/jubeerathan-thevakumar-87b9b8255">here</a></td>
-                    </tr>
-                    <tr>
-                        <td>Luxshan Thavarasa</td>
-                        <td>luxshan.20@cse.mrt.ac.lk</td>
-                        <td><a href="https://lk.linkedin.com/in/lux-thavarasa">here</a></td>
-                    </tr>
-                    <tr>
-                        <td>Thanikan Sivatheepan</td>
-                        <td>thanikan.20@cse.mrt.ac.lk</td>
-                        <td><a href="https://lk.linkedin.com/in/sthanikan2000">here</a></td>
-                    </tr>
-                    <tr>
-                        <td>Uthayasanker Thayasivam*</td>
-                        <td>rtuthaya@cse.mrt.ac.lk</td>
-                        <td><a href="https://lk.linkedin.com/in/rtuthaya">here</a></td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="contact-cards">
+                <div class="contact-card">
+                    <h3>Jubeerathan Thevakumar</h3>
+                    <p>Email: <a href="mailto:jubeerathan.20@cse.mrt.ac.lk">jubeerathan.20@cse.mrt.ac.lk</a></p>
+                    <a href="https://lk.linkedin.com/in/jubeerathan-thevakumar-87b9b8255" target="_blank" class="linkedin-icon">LinkedIn</a>
+                </div>
+                <div class="contact-card">
+                    <h3>Luxshan Thavarasa</h3>
+                    <p>Email: <a href="mailto:luxshan.20@cse.mrt.ac.lk">luxshan.20@cse.mrt.ac.lk</a></p>
+                    <a href="https://lk.linkedin.com/in/lux-thavarasa" target="_blank" class="linkedin-icon">LinkedIn</a>
+                </div>
+                <div class="contact-card">
+                    <h3>Thanikan Sivatheepan</h3>
+                    <p>Email: <a href="mailto:thanikan.20@cse.mrt.ac.lk">thanikan.20@cse.mrt.ac.lk</a></p>
+                    <a href="https://lk.linkedin.com/in/sthanikan2000" target="_blank" class="linkedin-icon">LinkedIn</a>
+                </div>
+                <div class="contact-card">
+                    <h3>Uthayasanker Thayasivam</h3>
+                    <p>Email: <a href="mailto:rtuthaya@cse.mrt.ac.lk">rtuthaya@cse.mrt.ac.lk</a></p>
+                    <a href="https://lk.linkedin.com/in/rtuthaya" target="_blank" class="linkedin-icon">LinkedIn</a>
+                </div>
+            </div>
         </section>
     </main>
 </body>
