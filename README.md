@@ -1,5 +1,18 @@
-# EmoTa: Tamil Emotional Speech Dataset
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/aaivu/EmoTa?style=flat-rounded)
+<div align="center">
+    <h1>
+        EmoTa
+    </h1>
+    <p>
+Tamil Emotional Speech Dataset is a collection of recordings in Sri Lankan Tamil, representing the distinct dialects spoken in the northern, eastern, western, and central provinces. It aims to capture the linguistic and emotional diversity of these regions for use in speech and emotion recognition research.
+</div>
+
+<div align="center">
+  <img src="https://img.shields.io/github/v/release/aaivu/EmoTa?style=flat-rounded" alt="GitHub release (latest by date)" />
+  <img src="https://img.shields.io/badge/License-EmoTa%20Academic--Commercial-blue.svg"  alt="License: EmoTa Academic-Commercial License">
+</div>
+
+---
+---
 
 **EmoTa** is the first emotional speech dataset in Tamil, designed to reflect the linguistic diversity of Sri Lankan Tamil speakers. It includes 936 utterances from 22 native Tamil speakers (11 male, 11 female), each articulating 19 semantically neutral sentences across five primary emotions: **Anger**, **Happiness**, **Sadness**, **Fear**, and **Neutrality**.
 
