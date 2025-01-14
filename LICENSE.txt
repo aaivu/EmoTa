@@ -1,0 +1,49 @@
+EmoTa Academic-Commercial License (EACL)
+Version 1.0, 2024
+
+TERMS AND CONDITIONS
+
+1. DEFINITIONS
+"Dataset" refers to the EmoTa dataset and all associated materials
+"Academic Use" refers to research and educational purposes
+"Commercial Use" refers to any use intended for commercial advantage
+"License" refers to this EmoTa Academic-Commercial License (EACL)
+
+2. ACADEMIC AND RESEARCH USE
+This work is licensed under CC BY-NC 4.0 for academic use with additional terms:
+a) You must complete the usage agreement form
+b) You must provide attribution
+c) You may not use the material for commercial purposes
+d) You must maintain all copyright notices
+
+3. COMMERCIAL USE
+Commercial use requires:
+a) Separate paid license agreement
+b) Written permission from the EmoTa team
+c) Contact rtuthaya@cse.mrt.ac.lk for licensing
+
+4. USAGE AGREEMENT
+All users must:
+a) Complete the provided usage agreement form
+b) Receive approval before accessing the dataset
+c) Maintain records of approved usage
+
+5. ATTRIBUTION
+For academic use, cite as:
+#TODO
+
+6. WARRANTY AND LIABILITY
+The dataset is provided "as is" without warranty of any kind.
+
+7. TERMINATION
+This license terminates automatically upon any breach of its terms.
+
+8. CONTACT
+Academic inquiries: rtuthaya@cse.mrt.ac.lk
+Commercial licensing: rtuthaya@cse.mrt.ac.lk
+
+Copyright (c) 2024 EmoTa Dataset Team. All Rights Reserved.
+
+-------------------
+For full CC BY-NC 4.0 license text, visit:
+https://creativecommons.org/licenses/by-nc/4.0/
