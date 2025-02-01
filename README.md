@@ -84,5 +84,9 @@ Paper: [view](https://aclanthology.org/2025.chipsal-1.19.pdf)
 | Thanikan Sivatheepan         | [thanikan.20@cse.mrt.ac.lk](mailto:thanikan.20@cse.mrt.ac.lk)     | [here](https://lk.linkedin.com/in/sthanikan2000)      |
 | Uthayasanker Thayasivam*      | [rtuthaya@cse.mrt.ac.lk](mailto:rtuthaya@cse.mrt.ac.lk)           | [here](https://lk.linkedin.com/in/rtuthaya) |
 
+###
+Thanks to all the volunteers who provided samples to make **EmoTa** possible. Special thanks to Braveena Sritharan for her invaluable help, and to  Sajeev Kugarajah for his contribution to dataset collection.
+
+
 ----
 [Dataset Access](https://rtuthaya.staff.uom.lk/resources/dataset/43)
