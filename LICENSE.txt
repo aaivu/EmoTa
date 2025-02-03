@@ -8,6 +8,7 @@ TERMS AND CONDITIONS
 "Academic Use" refers to research and educational purposes
 "Commercial Use" refers to any use intended for commercial advantage
 "License" refers to this EmoTa Academic-Commercial License (EACL)
+"Licensor" The creator and owner of the dataset, Team EmoTa or aaivu
 
 2. ACADEMIC AND RESEARCH USE
 This work is licensed under CC BY-NC 4.0 for academic use with additional terms:
@@ -27,10 +28,20 @@ All users must:
 a) Complete the provided usage agreement form
 b) Receive approval before accessing the dataset
 c) Maintain records of approved usage
+d) The Licensee shall not redistribute, sell, sublicense, or publicly share the dataset in its original or modified form without prior written approval from the Licensor.
+e) The Licensor reserves the right to terminate the Licensee’s access to the dataset in case of any breach of this Agreement.
+f) Upon termination, the Licensee must delete all copies of the dataset and cease its usage.
 
 5. ATTRIBUTION
 For academic use, cite as:
-#TODO
+
+@inproceedings{thevakumar2025emota,
+  title={EmoTa: A Tamil Emotional Speech Dataset},
+  author={Thevakumar, Jubeerathan and Thavarasa, Luxshan and Sivatheepan, Thanikan and Kugarajah, Sajeev and Thayasivam, Uthayasanker},
+  booktitle={Proceedings of the First Workshop on Challenges in Processing South Asian Languages (CHiPSAL 2025)},
+  pages={193--201},
+  year={2025}
+}
 
 6. WARRANTY AND LIABILITY
 The dataset is provided "as is" without warranty of any kind.
