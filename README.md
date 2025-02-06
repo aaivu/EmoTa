@@ -3,12 +3,18 @@
         EmoTa
     </h1>
     <p>
-Tamil Emotional Speech Dataset is a collection of recordings in Sri Lankan Tamil, representing the distinct dialects spoken in the northern, eastern, western, and central provinces. It aims to capture the linguistic and emotional diversity of these regions for use in speech and emotion recognition research. <a href="https://aclanthology.org/2025.chipsal-1.19.pdf">here</a>
+Tamil Emotional Speech Dataset is a collection of recordings in Sri Lankan Tamil, representing the distinct dialects spoken in the northern, eastern, western, and central provinces. It aims to capture the linguistic and emotional diversity of these regions for use in speech and emotion recognition research.
 </div>
 
 <div align="center">
   <img src="https://img.shields.io/github/v/release/aaivu/EmoTa?style=flat-rounded" alt="GitHub release (latest by date)" />
-  <img src="https://img.shields.io/badge/License-EmoTa%20Academic--Commercial-blue.svg"  alt="License: EmoTa Academic-Commercial License">
+  <img src="https://img.shields.io/badge/License-EmoTa%20Academic--Commercial-blue.svg" alt="License: EmoTa Academic-Commercial License">
+  <a href="https://rtuthaya.staff.uom.lk/contact-for-resources">
+    <img src="https://img.shields.io/badge/Dataset%20Access-Click%20Here-brightgreen.svg" alt="Dataset Access">
+  </a>
+  <a href="https://aclanthology.org/2025.chipsal-1.19.pdf">
+    <img src="https://img.shields.io/badge/Paper-Read%20Now-orange.svg" alt="Paper">
+  </a>
 </div>
 
 ---
@@ -75,18 +81,21 @@ Paper: [view](https://aclanthology.org/2025.chipsal-1.19.pdf)
 
 ---
 
-### Contact
+## Contact  
 
-| **Name**                     | **Email**                                       | **LinkedIn**                                         |
-|------------------------------|------------------------------------------------|----------------------------------------------------|
-| Jubeerathan Thevakumar       | [jubeerathan.20@cse.mrt.ac.lk](mailto:jubeerathan.20@cse.mrt.ac.lk) | [here](https://lk.linkedin.com/in/jubeerathan-thevakumar-87b9b8255) |
-| Luxshan Thavarasa            | [luxshan.20@cse.mrt.ac.lk](mailto:luxshan.20@cse.mrt.ac.lk)       | [here](https://linkedin.com/in/lux-thavarasa)          |
-| Thanikan Sivatheepan         | [thanikan.20@cse.mrt.ac.lk](mailto:thanikan.20@cse.mrt.ac.lk)     | [here](https://lk.linkedin.com/in/sthanikan2000)      |
-| Uthayasanker Thayasivam*      | [rtuthaya@cse.mrt.ac.lk](mailto:rtuthaya@cse.mrt.ac.lk)           | [here](https://lk.linkedin.com/in/rtuthaya) |
+| 🏷️ **Name**                 | 📧 **Email**                                      | 🔗 **LinkedIn**                                      |
+|------------------------------|--------------------------------------------------|----------------------------------------------------|
+| **Jubeerathan Thevakumar**   | [jubeerathan.20@cse.mrt.ac.lk](mailto:jubeerathan.20@cse.mrt.ac.lk) | [LinkedIn](https://lk.linkedin.com/in/jubeerathan-thevakumar-87b9b8255) |
+| **Luxshan Thavarasa**        | [luxshan.20@cse.mrt.ac.lk](mailto:luxshan.20@cse.mrt.ac.lk)       | [LinkedIn](https://linkedin.com/in/lux-thavarasa)          |
+| **Thanikan Sivatheepan**     | [thanikan.20@cse.mrt.ac.lk](mailto:thanikan.20@cse.mrt.ac.lk)     | [LinkedIn](https://lk.linkedin.com/in/sthanikan2000)      |
+| **Uthayasanker Thayasivam**  | [rtuthaya@cse.mrt.ac.lk](mailto:rtuthaya@cse.mrt.ac.lk)           | [LinkedIn](https://lk.linkedin.com/in/rtuthaya) |
 
-### Acknowledgment
-Thanks to all the volunteers who provided samples to make **EmoTa** possible. Special thanks to Braveena Sritharan for her invaluable help, and to  Sajeev Kugarajah for his contribution to dataset collection.
+## Acknowledgment  
 
+Thanks to all the volunteers who provided samples to make **EmoTa** possible.  
+Special thanks to **Braveenan Sritharan** for his invaluable help and to **Sajeev Kugarajah** for his contribution to dataset collection.  
 
-----
-[Dataset Access](https://rtuthaya.staff.uom.lk/resources/dataset/43)
+---
+
+🔗 **[Dataset Access](https://rtuthaya.staff.uom.lk/resources/dataset/43)**
+
