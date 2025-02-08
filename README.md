@@ -9,12 +9,8 @@ Tamil Emotional Speech Dataset is a collection of recordings in Sri Lankan Tamil
 <div align="center">
   <img src="https://img.shields.io/github/v/release/aaivu/EmoTa?style=flat-rounded" alt="GitHub release (latest by date)" />
   <img src="https://img.shields.io/badge/License-EmoTa%20Academic--Commercial-blue.svg" alt="License: EmoTa Academic-Commercial License">
-  <a href="https://rtuthaya.staff.uom.lk/contact-for-resources">
-    <img src="https://img.shields.io/badge/Dataset%20Access-Click%20Here-brightgreen.svg" alt="Dataset Access">
-  </a>
-  <a href="https://aclanthology.org/2025.chipsal-1.19.pdf">
-    <img src="https://img.shields.io/badge/Paper-Read%20Now-orange.svg" alt="Paper">
-  </a>
+  <a href="https://rtuthaya.staff.uom.lk/contact-for-resources"><img src="https://img.shields.io/badge/Dataset%20Access-Click%20Here-brightgreen.svg" alt="Dataset Access"></a>
+  <a href="https://aclanthology.org/2025.chipsal-1.19.pdf"><img src="https://img.shields.io/badge/Paper-Read%20Now-orange.svg" alt="Paper"></a>
 </div>
 
 ---
