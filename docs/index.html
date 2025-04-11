@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,133 +18,169 @@
     <meta name="twitter:image" content="https://via.placeholder.com/1200x630.png?text=EmoTa+Dataset">
     <meta name="google-site-verification" content="vJ_8_GXQXpYoFpEnwPu_CdkGLjqzwp9DWGHrlCsLHNI" />
     <title>EmoTa Dataset</title>
+    
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            light: '#d9e4f5',
+                            DEFAULT: '#2c3e50',
+                            dark: '#1a2533',
+                        },
+                        accent: {
+                            DEFAULT: '#1d72b8',
+                            hover: '#165a94',
+                        },
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            },
+            darkMode: 'class',
+        }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom styles that can't be easily done with Tailwind -->
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f7f9fc;
-            color: #333;
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            background-color: #d9e4f5;
-            padding: 20px;
-            text-align: center;
-        }
-        header h1 {
-            margin: 0;
-            color: #2c3e50;
-        }
-        main {
-            padding: 20px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        section {
-            margin-bottom: 20px;
-            padding: 15px;
-            background-color: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0 2px 2px rgba(170, 170, 170, 0.1);
-        }
-        section h2 {
-            margin-top: 0;
-            color: #2c3e50;
-        }
-        a {
-            color: #1d72b8;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        /* Flexbox layout for cards */
-        .contact-cards {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 5px;
-        }
-        .contact-card {
-            background-color: #ffffff;
-            padding: 5px;
-            border-radius: 8px;
-            box-shadow: 0 2px 2px rgba(120, 120, 120, 0.1);
-            text-align: center;
-            width: 220px;
+        /* For the code block overflow */
+        pre {
+            overflow-x: auto;
             max-width: 100%;
-            font-size: 12px;
-        }
-        .contact-card h3 {
-            margin-top: 0;
-            color: #2c3e50;
-        }
-        .contact-card a {
-            display: block;
-            color: #1d72b8;
-            text-decoration: none;
-        }
-        .contact-card a:hover {
-            text-decoration: underline;
-        }
-        .contact-card .linkedin-icon {
-            font-size: 12px;
-            color: #0e76a8;
-        }
-        .contact-card h3 {
-            padding: 0;
-            margin: 0;
         }
     </style>
 </head>
-<body>
-    <header>
-        <h1>EmoTa Dataset</h1>
-    </header>
-    <main>
-        <section>
-            <h2>Overview</h2>
-            <p>The <strong>EmoTa Tamil Emotional Speech Dataset</strong> is a collection of recordings in Sri Lankan Tamil, representing distinct dialects from the northern, eastern, western, and central provinces. It is designed for research in speech and emotion recognition.</p>
-
-            <p>
-              <a href="https://github.com/aaivu/EmoTa" target="_blank">GitHub Repository</a> | 
-              <a href="https://github.com/aaivu/EmoTa/blob/main/LICENSE.txt" target="_blank">License</a> | 
-              <a href="https://github.com/aaivu/EmoTa/blob/main/EmoTa%20Dataset%20Usage%20Agreement%20Form.pdf" target="_blank">Usage Agreement</a> | 
-              <a href="https://aclanthology.org/2025.chipsal-1.19.pdf" target="_blank">Paper</a> | 
-              <a href="https://rtuthaya.staff.uom.lk/resources/dataset/43" target="_blank">Dataset Access</a>
-            </p>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 transition-colors duration-300">
+    <div class="flex flex-col min-h-screen">
+        <!-- Dark mode toggle button -->
+        <div class="absolute top-4 right-4 z-10">
+            <button id="darkModeToggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 focus:outline-none">
+                <i class="fas fa-moon dark:hidden"></i>
+                <i class="fas fa-sun hidden dark:inline"></i>
+            </button>
+        </div>
+        
+        <!-- Header -->
+        <header class="bg-gradient-to-r from-primary-light to-blue-200 dark:from-primary-dark dark:to-blue-900 py-12 md:py-16 text-center shadow-lg">
+            <div class="container mx-auto px-4">
+                <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-primary dark:text-white mb-4">EmoTa Dataset</h1>
+                <p class="text-lg md:text-xl text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
+                    A comprehensive Tamil emotional speech dataset for research in speech and emotion recognition
+                </p>
+            </div>
+        </header>
+        
+        <!-- Main content -->
+        <main class="flex-grow container mx-auto px-4 py-8 md:px-6 lg:px-8">
+            <!-- Overview Section -->
+            <section class="mb-8 bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 p-6">
+                <h2 class="text-2xl md:text-3xl font-semibold text-primary dark:text-blue-300 mb-4">Overview</h2>
+                <p class="mb-4 text-gray-700 dark:text-gray-300">
+                    The <strong class="font-medium">EmoTa Tamil Emotional Speech Dataset</strong> is a collection of recordings in Sri Lankan Tamil, representing distinct dialects from the northern, eastern, western, and central provinces. It is designed for research in speech and emotion recognition.
+                </p>
+                
+                <div class="flex flex-wrap gap-2 mt-4">
+                    <a href="https://github.com/aaivu/EmoTa" target="_blank" class="inline-flex items-center px-3 py-2 text-sm font-medium rounded-lg bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-primary dark:text-blue-300 transition-colors duration-200">
+                        <i class="fab fa-github mr-2"></i> GitHub Repository
+                    </a>
+                    <a href="https://github.com/aaivu/EmoTa/blob/main/LICENSE.txt" target="_blank" class="inline-flex items-center px-3 py-2 text-sm font-medium rounded-lg bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-primary dark:text-blue-300 transition-colors duration-200">
+                        <i class="fas fa-file-contract mr-2"></i> License
+                    </a>
+                    <a href="https://github.com/aaivu/EmoTa/blob/main/EmoTa%20Dataset%20Usage%20Agreement%20Form.pdf" target="_blank" class="inline-flex items-center px-3 py-2 text-sm font-medium rounded-lg bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-primary dark:text-blue-300 transition-colors duration-200">
+                        <i class="fas fa-file-signature mr-2"></i> Usage Agreement
+                    </a>
+                    <a href="https://aclanthology.org/2025.chipsal-1.19.pdf" target="_blank" class="inline-flex items-center px-3 py-2 text-sm font-medium rounded-lg bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-primary dark:text-blue-300 transition-colors duration-200">
+                        <i class="fas fa-file-pdf mr-2"></i> Paper
+                    </a>
+                    <a href="https://rtuthaya.staff.uom.lk/resources/dataset/43" target="_blank" class="inline-flex items-center px-3 py-2 text-sm font-medium rounded-lg bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-primary dark:text-blue-300 transition-colors duration-200">
+                        <i class="fas fa-download mr-2"></i> Dataset Access
+                    </a>
+                </div>
+            </section>
             
-        </section>
-
-        <section>
-            <h2>Key Features</h2>
-            <ul>
-                <li><strong>Speakers:</strong> 22 native Tamil speakers (11 male, 11 female)</li>
-                <li><strong>Emotions:</strong> Anger, Happiness, Sadness, Fear, Neutrality</li>
-                <li><strong>Sentences:</strong> 19 semantically neutral sentences</li>
-                <li><strong>Recording Quality:</strong> Captured in a soundproof environment</li>
-                <li><strong>Total Duration:</strong> Approx. 48 minutes</li>
-            </ul>
-        </section>
-
-        <section>
-            <h2>Dataset Structure</h2>
-            <pre>
+            <!-- Key Features Section -->
+            <section class="mb-8 bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 p-6">
+                <h2 class="text-2xl md:text-3xl font-semibold text-primary dark:text-blue-300 mb-4">Key Features</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div class="p-4 bg-gray-50 dark:bg-gray-700 rounded-lg border border-gray-200 dark:border-gray-600">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-users text-accent text-xl mr-3"></i>
+                            <h3 class="font-semibold">Speakers</h3>
+                        </div>
+                        <p>22 native Tamil speakers (11 male, 11 female)</p>
+                    </div>
+                    
+                    <div class="p-4 bg-gray-50 dark:bg-gray-700 rounded-lg border border-gray-200 dark:border-gray-600">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-smile-beam text-accent text-xl mr-3"></i>
+                            <h3 class="font-semibold">Emotions</h3>
+                        </div>
+                        <p>Anger, Happiness, Sadness, Fear, Neutrality</p>
+                    </div>
+                    
+                    <div class="p-4 bg-gray-50 dark:bg-gray-700 rounded-lg border border-gray-200 dark:border-gray-600">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-comment-alt text-accent text-xl mr-3"></i>
+                            <h3 class="font-semibold">Sentences</h3>
+                        </div>
+                        <p>19 semantically neutral sentences</p>
+                    </div>
+                    
+                    <div class="p-4 bg-gray-50 dark:bg-gray-700 rounded-lg border border-gray-200 dark:border-gray-600">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-microphone-alt text-accent text-xl mr-3"></i>
+                            <h3 class="font-semibold">Recording Quality</h3>
+                        </div>
+                        <p>Captured in a soundproof environment</p>
+                    </div>
+                    
+                    <div class="p-4 bg-gray-50 dark:bg-gray-700 rounded-lg border border-gray-200 dark:border-gray-600">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-clock text-accent text-xl mr-3"></i>
+                            <h3 class="font-semibold">Total Duration</h3>
+                        </div>
+                        <p>Approximately 48 minutes</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Dataset Structure Section -->
+            <section class="mb-8 bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 p-6">
+                <h2 class="text-2xl md:text-3xl font-semibold text-primary dark:text-blue-300 mb-4">Dataset Structure</h2>
+                
+                <div class="bg-gray-800 text-gray-200 p-4 rounded-lg overflow-x-auto font-mono text-sm">
+<pre class="whitespace-pre">
 EmoTa/
 ├── happy/
 ├── sad/
 ├── angry/
 ├── fear/
 └── neutral/
-    └── <spkID>_<senID>_<emo[:3]>.wav
-            </pre>
-        </section>
-
-<section>
-    <h2>Citation</h2>
-    <p>If you use <strong>EmoTa: A Tamil Emotional Speech Dataset</strong> in your research, please cite:</p>
-<pre style="overflow:auto;">
-        <code>
+    └── &lt;spkID&gt;_&lt;senID&gt;_&lt;emo[:3]&gt;.wav
+</pre>
+                </div>
+            </section>
+            
+            <!-- Citation Section -->
+            <section class="mb-8 bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 p-6">
+                <h2 class="text-2xl md:text-3xl font-semibold text-primary dark:text-blue-300 mb-4">Citation</h2>
+                <p class="mb-4 text-gray-700 dark:text-gray-300">If you use <strong class="font-medium">EmoTa: A Tamil Emotional Speech Dataset</strong> in your research, please cite:</p>
+                
+                <div class="bg-gray-800 text-gray-200 p-4 rounded-lg overflow-x-auto font-mono text-sm">
+<pre class="whitespace-pre">
 @inproceedings{thevakumar-etal-2025-emota,
     title = "{E}mo{T}a: A {T}amil Emotional Speech Dataset",
     author = "Thevakumar, Jubeerathan  and
@@ -165,35 +202,106 @@ EmoTa/
     pages = "193--201",
     abstract = "This paper introduces EmoTa, the first emotional speech dataset in Tamil, designed to reflect the linguistic diversity of Sri Lankan Tamil speakers. EmoTa comprises 936 recorded utterances from 22 native Tamil speakers (11 male, 11 female), each articulating 19 semantically neutral sentences across five primary emotions: anger, happiness, sadness, fear, and neutrality. To ensure quality, inter-annotator agreement was assessed using Fleiss' Kappa, resulting in a substantial agreement score of 0.74. Initial evaluations using machine learning models, including XGBoost and Random Forest, yielded a high F1-score of 0.91 and 0.90 for emotion classification tasks. By releasing EmoTa, we aim to encourage further exploration of Tamil language processing and the development of innovative models for Tamil Speech Emotion Recognition."
 }
-        </code>
-    </pre>
-    </section>
-
-        <section>
-            <h2>Contact</h2>
-            <div class="contact-cards">
-                <div class="contact-card">
-                    <h3>Jubeerathan <br/> Thevakumar</h3>
-                    <a href="mailto:jubeerathan.20@cse.mrt.ac.lk">jubeerathan.20@cse.mrt.ac.lk</a>
-                    <a href="https://lk.linkedin.com/in/jubeerathan-thevakumar-87b9b8255" target="_blank" class="linkedin-icon">LinkedIn</a>
+</pre>
                 </div>
-                <div class="contact-card">
-                    <h3>Luxshan <br/> Thavarasa</h3>
-                    <a href="mailto:luxshan.20@cse.mrt.ac.lk">luxshan.20@cse.mrt.ac.lk</a>
-                    <a href="https://lk.linkedin.com/in/lux-thavarasa" target="_blank" class="linkedin-icon">LinkedIn</a>
+            </section>
+            
+            <!-- Contact Section -->
+            <section class="mb-8 bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 p-6">
+                <h2 class="text-2xl md:text-3xl font-semibold text-primary dark:text-blue-300 mb-4">Contact</h2>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <!-- Contact Card 1 -->
+                    <div class="bg-gray-50 dark:bg-gray-700 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 p-4 text-center">
+                        <h3 class="font-semibold text-lg mb-2">Jubeerathan<br>Thevakumar</h3>
+                        <a href="mailto:jubeerathan.20@cse.mrt.ac.lk" class="text-accent hover:text-accent-hover transition-colors duration-200 block mb-2">
+                            <i class="fas fa-envelope mr-2"></i>jubeerathan.20@cse.mrt.ac.lk
+                        </a>
+                        <a href="https://lk.linkedin.com/in/jubeerathan-thevakumar-87b9b8255" target="_blank" class="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 transition-colors duration-200 inline-flex items-center">
+                            <i class="fab fa-linkedin mr-2"></i>LinkedIn
+                        </a>
+                    </div>
+                    
+                    <!-- Contact Card 2 -->
+                    <div class="bg-gray-50 dark:bg-gray-700 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 p-4 text-center">
+                        <h3 class="font-semibold text-lg mb-2">Luxshan<br>Thavarasa</h3>
+                        <a href="mailto:luxshan.20@cse.mrt.ac.lk" class="text-accent hover:text-accent-hover transition-colors duration-200 block mb-2">
+                            <i class="fas fa-envelope mr-2"></i>luxshan.20@cse.mrt.ac.lk
+                        </a>
+                        <a href="https://lk.linkedin.com/in/lux-thavarasa" target="_blank" class="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 transition-colors duration-200 inline-flex items-center">
+                            <i class="fab fa-linkedin mr-2"></i>LinkedIn
+                        </a>
+                    </div>
+                    
+                    <!-- Contact Card 3 -->
+                    <div class="bg-gray-50 dark:bg-gray-700 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 p-4 text-center">
+                        <h3 class="font-semibold text-lg mb-2">Thanikan<br>Sivatheepan</h3>
+                        <a href="mailto:thanikan.20@cse.mrt.ac.lk" class="text-accent hover:text-accent-hover transition-colors duration-200 block mb-2">
+                            <i class="fas fa-envelope mr-2"></i>thanikan.20@cse.mrt.ac.lk
+                        </a>
+                        <a href="https://lk.linkedin.com/in/sthanikan2000" target="_blank" class="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 transition-colors duration-200 inline-flex items-center">
+                            <i class="fab fa-linkedin mr-2"></i>LinkedIn
+                        </a>
+                    </div>
+                    
+                    <!-- Contact Card 4 -->
+                    <div class="bg-gray-50 dark:bg-gray-700 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 p-4 text-center">
+                        <h3 class="font-semibold text-lg mb-2">Uthayasanker<br>Thayasivam</h3>
+                        <a href="mailto:rtuthaya@cse.mrt.ac.lk" class="text-accent hover:text-accent-hover transition-colors duration-200 block mb-2">
+                            <i class="fas fa-envelope mr-2"></i>rtuthaya@cse.mrt.ac.lk
+                        </a>
+                        <a href="https://lk.linkedin.com/in/rtuthaya" target="_blank" class="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 transition-colors duration-200 inline-flex items-center">
+                            <i class="fab fa-linkedin mr-2"></i>LinkedIn
+                        </a>
+                    </div>
                 </div>
-                <div class="contact-card">
-                    <h3>Thanikan <br/> Sivatheepan</h3>
-                    <a href="mailto:thanikan.20@cse.mrt.ac.lk">thanikan.20@cse.mrt.ac.lk</a>
-                    <a href="https://lk.linkedin.com/in/sthanikan2000" target="_blank" class="linkedin-icon">LinkedIn</a>
-                </div>
-                <div class="contact-card">
-                    <h3>Uthayasanker <br/> Thayasivam</h3>
-                    <a href="mailto:rtuthaya@cse.mrt.ac.lk">rtuthaya@cse.mrt.ac.lk</a>
-                    <a href="https://lk.linkedin.com/in/rtuthaya" target="_blank" class="linkedin-icon">LinkedIn</a>
+            </section>
+        </main>
+        
+        <!-- Footer -->
+        <footer class="bg-gray-100 dark:bg-gray-800 py-6 border-t border-gray-200 dark:border-gray-700">
+            <div class="container mx-auto px-4 text-center">
+                <p class="text-gray-600 dark:text-gray-400">© 2025 EmoTa Dataset. All rights reserved.</p>
+                <div class="mt-4 flex justify-center space-x-4">
+                    <a href="https://github.com/aaivu/EmoTa" target="_blank" class="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                    <a href="https://aclanthology.org/2025.chipsal-1.19/" target="_blank" class="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300">
+                        <i class="fas fa-file-alt text-xl"></i>
+                    </a>
                 </div>
             </div>
-        </section>
-    </main>
+        </footer>
+    </div>
+    
+    <!-- Dark mode toggle script -->
+    <script>
+        // Check for saved theme preference or prefer-color-scheme
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        
+        // Function to set theme
+        function setTheme(isDark) {
+            if (isDark) {
+                document.documentElement.classList.add('dark');
+                localStorage.theme = 'dark';
+            } else {
+                document.documentElement.classList.remove('dark');
+                localStorage.theme = 'light';
+            }
+        }
+        
+        // Initialize theme based on saved preference or system preference
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            setTheme(true);
+        } else {
+            setTheme(false);
+        }
+        
+        // Toggle theme on button click
+        darkModeToggle.addEventListener('click', () => {
+            const isDark = document.documentElement.classList.contains('dark');
+            setTheme(!isDark);
+        });
+    </script>
 </body>
 </html>
