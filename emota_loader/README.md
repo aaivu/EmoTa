@@ -30,25 +30,34 @@ pip install emota_loader
 ```python
 from emota_loader import EmoTaDataset
 
-dataset = EmoTaDataset(root_dir="path/to/EmoTa")
+dataset = EmoTaDataset(root_dir="path/to/EmoTa").samples
 
 print(f"Loaded {len(dataset)} samples")
 
 sample = dataset[0]
-print("Transcript:", sample.transcript)
-print("Emotion:", sample.emotion.value)
-print("Speaker Region:", sample.speaker_region)
-print("Audio Path:", sample.audio_path)
+print(f"  Audio Path      : {sample.audio_path}")
+print(f"  Speaker ID      : {sample.speaker_id}")
+print(f"  Speaker Gender  : {sample.speaker_gender}")
+print(f"  Speaker Age     : {sample.speaker_age}")
+print(f"  Speaker Region  : {sample.speaker_region}")
+print(f"  Sentence ID     : {sample.sentence_id}")
+print(f"  Transcript      : {sample.transcript}")
+print(f"  Emotion         : {sample.emotion}")
 ```
 
 ### Example Output
 
 ```
 Loaded 936 samples
-Transcript: என் மகன் செல்வராகவன்
-Emotion: happy
-Speaker Region: Jaffna
-Audio Path: path/to/EmoTa/happy/01_03_happy.wav
+
+  Audio Path      : EmoTa/19_18_ang.wav
+  Speaker ID      : 19
+  Speaker Gender  : male
+  Speaker Age     : 25
+  Speaker Region  : northern
+  Sentence ID     : 18
+  Transcript      : நான் உன்னை சந்திக்க வேண்டும்.
+  Emotion         : angry
 ```
 
 ---
