@@ -1,0 +1,40 @@
+name: Publish Python Package to PyPI
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  publish:
+    name: Publish to PyPI
+    runs-on: ubuntu-latest
+    environment: pypi
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install uv (fast Python package manager)
+        uses: yezz123/setup-uv@v1
+
+      - name: Install build tool
+        run: uv pip install build
+
+      - name: Build the package inside emota_loader/
+        run: |
+          cd emota_loader
+          uv run -m build
+
+      - name: Publish to PyPI via OIDC
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          repository-url: https://upload.pypi.org/legacy/
+          packages-dir: emota_loader/dist
