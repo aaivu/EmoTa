@@ -29,6 +29,16 @@
                         extend: {
                             colors: {
                                 primary: {
+                                    50: '#f0f6ff',
+                                    100: '#e0edff',
+                                    200: '#c7dbff',
+                                    300: '#a5c3ff',
+                                    400: '#829fff',
+                                    500: '#6366f1',
+                                    600: '#4f46e5',
+                                    700: '#4338ca',
+                                    800: '#3730a3',
+                                    900: '#312e81',
                                     light: '#d9e4f5',
                                     DEFAULT: '#2c3e50',
                                     dark: '#1a2533',
@@ -36,11 +46,45 @@
                                 accent: {
                                     DEFAULT: '#1d72b8',
                                     hover: '#165a94',
+                                    light: '#3b82f6',
+                                    dark: '#1e40af',
                                 },
                             },
                             fontFamily: {
-                                sans: ['Inter', 'sans-serif'],
+                                sans: ['Inter', 'system-ui', 'sans-serif'],
                             },
+                            animation: {
+                                'fade-in': 'fadeIn 0.6s ease-in-out',
+                                'slide-up': 'slideUp 0.8s ease-out',
+                                'bounce-subtle': 'bounceSubtle 2s infinite',
+                                'float': 'float 3s ease-in-out infinite',
+                                'glow': 'glow 2s ease-in-out infinite alternate',
+                            },
+                            keyframes: {
+                                fadeIn: {
+                                    '0%': { opacity: '0', transform: 'translateY(20px)' },
+                                    '100%': { opacity: '1', transform: 'translateY(0)' }
+                                },
+                                slideUp: {
+                                    '0%': { opacity: '0', transform: 'translateY(40px)' },
+                                    '100%': { opacity: '1', transform: 'translateY(0)' }
+                                },
+                                bounceSubtle: {
+                                    '0%, 100%': { transform: 'translateY(0)' },
+                                    '50%': { transform: 'translateY(-5px)' }
+                                },
+                                float: {
+                                    '0%, 100%': { transform: 'translateY(0px)' },
+                                    '50%': { transform: 'translateY(-10px)' }
+                                },
+                                glow: {
+                                    '0%': { boxShadow: '0 0 20px rgba(99, 102, 241, 0.3)' },
+                                    '100%': { boxShadow: '0 0 30px rgba(99, 102, 241, 0.6)' }
+                                }
+                            },
+                            backdropBlur: {
+                                xs: '2px',
+                            }
                         }
                     },
                     darkMode: 'class',
@@ -50,162 +94,379 @@
     </script>
     
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Custom styles that can't be easily done with Tailwind -->
+    <!-- Custom styles -->
     <style>
-        /* For the code block overflow */
         pre {
             overflow-x: auto;
             max-width: 100%;
         }
+        
+        .glassmorphism {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .dark .glassmorphism {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(45deg, #3b82f6, #6366f1, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero-pattern {
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+        }
+        
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px) scale(1.02);
+        }
+        
+        .section-divider {
+            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.3), transparent);
+        }
+        
+        .floating-element {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .pulse-ring {
+            animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        
+        @keyframes pulse-ring {
+            0% {
+                transform: scale(0.8);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1.5);
+                opacity: 0;
+            }
+        }
     </style>
 </head>
-<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 transition-colors duration-300">
-    <div class="flex flex-col min-h-screen">
-        <!-- Dark mode toggle button -->
-        <div class="absolute top-4 right-4 z-10">
-            <button id="darkModeToggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 focus:outline-none">
-                <i class="fas fa-moon dark:hidden"></i>
-                <i class="fas fa-sun hidden dark:inline"></i>
+<body class="bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-50 dark:from-gray-900 dark:via-blue-900 dark:to-indigo-900 text-gray-800 dark:text-gray-200 transition-all duration-500 overflow-x-hidden">
+    <!-- Animated background particles -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none">
+        <div class="absolute top-1/4 left-1/4 w-2 h-2 bg-blue-400 rounded-full opacity-20 animate-bounce"></div>
+        <div class="absolute top-3/4 right-1/4 w-3 h-3 bg-purple-400 rounded-full opacity-30 floating-element"></div>
+        <div class="absolute top-1/2 left-3/4 w-1 h-1 bg-indigo-400 rounded-full opacity-40 animate-ping"></div>
+        <div class="absolute bottom-1/4 left-1/2 w-2 h-2 bg-cyan-400 rounded-full opacity-25 floating-element" style="animation-delay: 1s"></div>
+    </div>
+
+    <div class="flex flex-col min-h-screen relative">
+        <!-- Enhanced Dark mode toggle button -->
+        <div class="fixed top-6 right-6 z-50">
+            <button id="darkModeToggle" class="group relative p-3 rounded-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-md border border-white/20 dark:border-gray-700/50 text-gray-700 dark:text-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 hover:scale-110 hover:shadow-lg animate-glow">
+                <div class="absolute inset-0 rounded-full bg-gradient-to-r from-blue-400 to-purple-500 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+                <i class="fas fa-moon dark:hidden text-lg relative z-10"></i>
+                <i class="fas fa-sun hidden dark:inline text-lg relative z-10"></i>
+                <div class="absolute inset-0 rounded-full border-2 border-blue-400 pulse-ring opacity-75"></div>
             </button>
         </div>
         
-        <!-- Header -->
-        <header class="bg-gradient-to-r from-primary-light to-blue-200 dark:from-primary-dark dark:to-blue-900 py-12 md:py-16 text-center shadow-lg">
-            <div class="container mx-auto px-4">
-                <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-primary dark:text-white mb-4">EmoTa Dataset</h1>
-                <p class="text-lg md:text-xl text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
-                    A comprehensive Tamil emotional speech dataset for research in speech and emotion recognition
-                </p>
+        <!-- Enhanced Header with particles and gradient -->
+        <header class="relative bg-gradient-to-br from-blue-600 via-indigo-700 to-purple-800 dark:from-blue-800 dark:via-indigo-900 dark:to-purple-900 py-16 md:py-24 text-center shadow-2xl hero-pattern overflow-hidden">
+            <!-- Animated background elements -->
+            <div class="absolute inset-0">
+                <div class="absolute top-20 left-10 w-20 h-20 bg-white/5 rounded-full blur-xl animate-float"></div>
+                <div class="absolute bottom-20 right-10 w-32 h-32 bg-purple-400/10 rounded-full blur-2xl floating-element"></div>
+                <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-blue-400/10 to-purple-400/10 rounded-full blur-3xl"></div>
+            </div>
+            
+            <div class="container mx-auto px-4 relative z-10">
+                <div class="animate-slide-up">
+                    <div class="mb-6">
+                        <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-white/10 backdrop-blur-md border border-white/20 mb-6 floating-element">
+                            <i class="fas fa-microphone-alt text-3xl text-white"></i>
+                        </div>
+                    </div>
+                    <h1 class="text-4xl md:text-6xl lg:text-7xl font-black text-white mb-6 tracking-tight">
+                        <span class="block">EmoTa</span>
+                        <span class="block text-2xl md:text-3xl lg:text-4xl font-light opacity-90">Dataset</span>
+                    </h1>
+                    <p class="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto leading-relaxed font-light">
+                        A comprehensive Tamil emotional speech dataset for research in 
+                        <span class="font-semibold text-white">speech and emotion recognition</span>
+                    </p>
+                    <div class="mt-8 flex flex-wrap justify-center gap-4">
+                        <div class="glassmorphism px-4 py-2 rounded-full text-white/90 text-sm font-medium">
+                            <i class="fas fa-users mr-2"></i> 22 Speakers
+                        </div>
+                        <div class="glassmorphism px-4 py-2 rounded-full text-white/90 text-sm font-medium">
+                            <i class="fas fa-heart mr-2"></i> 5 Emotions
+                        </div>
+                        <div class="glassmorphism px-4 py-2 rounded-full text-white/90 text-sm font-medium">
+                            <i class="fas fa-clock mr-2"></i> 48 Minutes
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Decorative wave -->
+            <div class="absolute bottom-0 left-0 right-0">
+                <svg viewBox="0 0 1200 120" class="w-full h-12 fill-gray-50 dark:fill-gray-900">
+                    <path d="M0,50 C300,10 600,90 900,50 C1050,25 1150,75 1200,50 L1200,120 L0,120 Z"></path>
+                </svg>
             </div>
         </header>
         
-        <!-- Main content -->
-        <main class="flex-grow container mx-auto px-4 py-8 md:px-6 lg:px-8">
-            <!-- Overview Section -->
-            <section class="mb-8 bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 p-6">
-                <h2 class="text-2xl md:text-3xl font-semibold text-primary dark:text-blue-300 mb-4">Overview</h2>
-                <p class="mb-4 text-gray-700 dark:text-gray-300">
-                    The <strong class="font-medium">EmoTa Tamil Emotional Speech Dataset</strong> is a collection of recordings in Sri Lankan Tamil, representing distinct dialects from the northern, eastern, western, and central provinces. It is designed for research in speech and emotion recognition.
-                </p>
-                
-                <div class="flex flex-wrap gap-2 mt-4">
-                    <a href="https://github.com/aaivu/EmoTa" target="_blank" class="inline-flex items-center px-3 py-2 text-sm font-medium rounded-lg bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-primary dark:text-blue-300 transition-colors duration-200">
-                        <i class="fab fa-github mr-2"></i> GitHub Repository
-                    </a>
-                    <a href="https://github.com/aaivu/EmoTa/blob/main/LICENSE.txt" target="_blank" class="inline-flex items-center px-3 py-2 text-sm font-medium rounded-lg bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-primary dark:text-blue-300 transition-colors duration-200">
-                        <i class="fas fa-file-contract mr-2"></i> License
-                    </a>
-                    <a href="https://github.com/aaivu/EmoTa/blob/main/EmoTa%20Dataset%20Usage%20Agreement%20Form.pdf" target="_blank" class="inline-flex items-center px-3 py-2 text-sm font-medium rounded-lg bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-primary dark:text-blue-300 transition-colors duration-200">
-                        <i class="fas fa-file-signature mr-2"></i> Usage Agreement
-                    </a>
-                    <a href="https://aclanthology.org/2025.chipsal-1.19.pdf" target="_blank" class="inline-flex items-center px-3 py-2 text-sm font-medium rounded-lg bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-primary dark:text-blue-300 transition-colors duration-200">
-                        <i class="fas fa-file-pdf mr-2"></i> Paper
-                    </a>
-                    <a href="https://rtuthaya.staff.uom.lk/resources/dataset/43" target="_blank" class="inline-flex items-center px-3 py-2 text-sm font-medium rounded-lg bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-primary dark:text-blue-300 transition-colors duration-200">
-                        <i class="fas fa-download mr-2"></i> Dataset Access
-                    </a>
-                </div>
-            </section>
+        <!-- Main content with improved spacing and animations -->
+        <main class="flex-grow container mx-auto px-4 py-12 md:px-6 lg:px-8 relative">
+            <!-- Floating section divider -->
+            <div class="section-divider h-px w-32 mx-auto mb-16 opacity-50"></div>
             
-            <!-- Key Features Section -->
-            <section class="mb-8 bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 p-6">
-                <h2 class="text-2xl md:text-3xl font-semibold text-primary dark:text-blue-300 mb-4">Key Features</h2>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    <div class="p-4 bg-gray-50 dark:bg-gray-700 rounded-lg border border-gray-200 dark:border-gray-600">
-                        <div class="flex items-center mb-2">
-                            <i class="fas fa-users text-accent text-xl mr-3"></i>
-                            <h3 class="font-semibold">Speakers</h3>
-                        </div>
-                        <p>22 native Tamil speakers (11 male, 11 female)</p>
-                    </div>
+            <!-- Enhanced Overview Section -->
+            <section class="mb-16 animate-fade-in">
+                <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-500 p-8 md:p-10 border border-white/20 dark:border-gray-700/30 card-hover relative overflow-hidden">
+                    <!-- Decorative gradient overlay -->
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-400/10 to-purple-400/10 rounded-full blur-2xl"></div>
                     
-                    <div class="p-4 bg-gray-50 dark:bg-gray-700 rounded-lg border border-gray-200 dark:border-gray-600">
-                        <div class="flex items-center mb-2">
-                            <i class="fas fa-smile-beam text-accent text-xl mr-3"></i>
-                            <h3 class="font-semibold">Emotions</h3>
+                    <div class="relative z-10">
+                        <div class="flex items-center mb-6">
+                            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center mr-4">
+                                <i class="fas fa-info-circle text-white text-xl"></i>
+                            </div>
+                            <h2 class="text-3xl md:text-4xl font-bold gradient-text">Overview</h2>
                         </div>
-                        <p>Anger, Happiness, Sadness, Fear, Neutrality</p>
-                    </div>
-                    
-                    <div class="p-4 bg-gray-50 dark:bg-gray-700 rounded-lg border border-gray-200 dark:border-gray-600">
-                        <div class="flex items-center mb-2">
-                            <i class="fas fa-comment-alt text-accent text-xl mr-3"></i>
-                            <h3 class="font-semibold">Sentences</h3>
+                        
+                        <p class="mb-6 text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
+                            The <strong class="font-semibold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">EmoTa Tamil Emotional Speech Dataset</strong> is a groundbreaking collection of recordings in Sri Lankan Tamil, representing distinct dialects from the northern, eastern, western, and central provinces. It is meticulously designed for cutting-edge research in speech and emotion recognition.
+                        </p>
+                        
+                        <div class="grid grid-cols-2 md:grid-cols-5 gap-3 mt-8">
+                            <a href="https://github.com/aaivu/EmoTa" target="_blank" class="group flex flex-col items-center p-4 rounded-2xl bg-gradient-to-br from-gray-50 to-gray-100 hover:from-blue-50 hover:to-indigo-50 dark:from-gray-700 dark:to-gray-800 dark:hover:from-blue-900/50 dark:hover:to-indigo-900/50 border border-gray-200 dark:border-gray-600 transition-all duration-300 hover:scale-105 hover:shadow-lg">
+                                <div class="w-10 h-10 rounded-xl bg-gray-800 dark:bg-white flex items-center justify-center mb-2 group-hover:bg-blue-600 transition-colors duration-300">
+                                    <i class="fab fa-github text-white dark:text-gray-800 group-hover:text-white"></i>
+                                </div>
+                                <span class="text-xs font-medium text-center">Repository</span>
+                            </a>
+                            
+                            <a href="https://github.com/aaivu/EmoTa/blob/main/LICENSE.txt" target="_blank" class="group flex flex-col items-center p-4 rounded-2xl bg-gradient-to-br from-gray-50 to-gray-100 hover:from-green-50 hover:to-emerald-50 dark:from-gray-700 dark:to-gray-800 dark:hover:from-green-900/50 dark:hover:to-emerald-900/50 border border-gray-200 dark:border-gray-600 transition-all duration-300 hover:scale-105 hover:shadow-lg">
+                                <div class="w-10 h-10 rounded-xl bg-green-600 flex items-center justify-center mb-2 group-hover:bg-emerald-600 transition-colors duration-300">
+                                    <i class="fas fa-file-contract text-white"></i>
+                                </div>
+                                <span class="text-xs font-medium text-center">License</span>
+                            </a>
+                            
+                            <a href="https://github.com/aaivu/EmoTa/blob/main/EmoTa%20Dataset%20Usage%20Agreement%20Form.pdf" target="_blank" class="group flex flex-col items-center p-4 rounded-2xl bg-gradient-to-br from-gray-50 to-gray-100 hover:from-purple-50 hover:to-violet-50 dark:from-gray-700 dark:to-gray-800 dark:hover:from-purple-900/50 dark:hover:to-violet-900/50 border border-gray-200 dark:border-gray-600 transition-all duration-300 hover:scale-105 hover:shadow-lg">
+                                <div class="w-10 h-10 rounded-xl bg-purple-600 flex items-center justify-center mb-2 group-hover:bg-violet-600 transition-colors duration-300">
+                                    <i class="fas fa-file-signature text-white"></i>
+                                </div>
+                                <span class="text-xs font-medium text-center">Agreement</span>
+                            </a>
+                            
+                            <a href="https://aclanthology.org/2025.chipsal-1.19.pdf" target="_blank" class="group flex flex-col items-center p-4 rounded-2xl bg-gradient-to-br from-gray-50 to-gray-100 hover:from-red-50 hover:to-rose-50 dark:from-gray-700 dark:to-gray-800 dark:hover:from-red-900/50 dark:hover:to-rose-900/50 border border-gray-200 dark:border-gray-600 transition-all duration-300 hover:scale-105 hover:shadow-lg">
+                                <div class="w-10 h-10 rounded-xl bg-red-600 flex items-center justify-center mb-2 group-hover:bg-rose-600 transition-colors duration-300">
+                                    <i class="fas fa-file-pdf text-white"></i>
+                                </div>
+                                <span class="text-xs font-medium text-center">Paper</span>
+                            </a>
+                            
+                            <a href="https://rtuthaya.staff.uom.lk/resources/dataset/43" target="_blank" class="group flex flex-col items-center p-4 rounded-2xl bg-gradient-to-br from-gray-50 to-gray-100 hover:from-cyan-50 hover:to-teal-50 dark:from-gray-700 dark:to-gray-800 dark:hover:from-cyan-900/50 dark:hover:to-teal-900/50 border border-gray-200 dark:border-gray-600 transition-all duration-300 hover:scale-105 hover:shadow-lg">
+                                <div class="w-10 h-10 rounded-xl bg-cyan-600 flex items-center justify-center mb-2 group-hover:bg-teal-600 transition-colors duration-300">
+                                    <i class="fas fa-download text-white"></i>
+                                </div>
+                                <span class="text-xs font-medium text-center">Dataset</span>
+                            </a>
                         </div>
-                        <p>19 semantically neutral sentences</p>
-                    </div>
-                    
-                    <div class="p-4 bg-gray-50 dark:bg-gray-700 rounded-lg border border-gray-200 dark:border-gray-600">
-                        <div class="flex items-center mb-2">
-                            <i class="fas fa-microphone-alt text-accent text-xl mr-3"></i>
-                            <h3 class="font-semibold">Recording Quality</h3>
-                        </div>
-                        <p>Captured in a soundproof environment</p>
-                    </div>
-                    
-                    <div class="p-4 bg-gray-50 dark:bg-gray-700 rounded-lg border border-gray-200 dark:border-gray-600">
-                        <div class="flex items-center mb-2">
-                            <i class="fas fa-clock text-accent text-xl mr-3"></i>
-                            <h3 class="font-semibold">Total Duration</h3>
-                        </div>
-                        <p>Approximately 48 minutes</p>
                     </div>
                 </div>
             </section>
             
-            <!-- Dataset Loader Section -->
-            <section class="mb-8 bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 p-6">
-                <h2 class="text-2xl md:text-3xl font-semibold text-primary dark:text-blue-300 mb-4">
-                    <i class="fas fa-wrench mr-3"></i>Dataset Loader
-                </h2>
-                
-                <p class="mb-4 text-gray-700 dark:text-gray-300">
-                    You can install the package from PyPI using:
-                </p>
-                
-                <div class="bg-gray-800 text-gray-200 p-4 rounded-lg overflow-x-auto font-mono text-sm mb-6">
-                    <pre class="whitespace-pre">pip install emota_loader</pre>
+            <!-- Enhanced Key Features Section -->
+            <section class="mb-16 animate-fade-in" style="animation-delay: 0.2s">
+                <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-500 p-8 md:p-10 border border-white/20 dark:border-gray-700/30 card-hover relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-40 h-40 bg-gradient-to-br from-purple-400/10 to-pink-400/10 rounded-full blur-2xl"></div>
+                    
+                    <div class="relative z-10">
+                        <div class="flex items-center mb-8">
+                            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center mr-4">
+                                <i class="fas fa-star text-white text-xl"></i>
+                            </div>
+                            <h2 class="text-3xl md:text-4xl font-bold gradient-text">Key Features</h2>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <div class="group relative p-6 bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 rounded-2xl border border-blue-200/50 dark:border-blue-700/30 transition-all duration-300 hover:scale-105 hover:shadow-lg">
+                                <div class="absolute inset-0 bg-gradient-to-br from-blue-400/5 to-cyan-400/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                <div class="relative z-10">
+                                    <div class="flex items-center mb-3">
+                                        <div class="w-10 h-10 rounded-xl bg-blue-500 flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300">
+                                            <i class="fas fa-users text-white"></i>
+                                        </div>
+                                        <h3 class="font-bold text-lg">Speakers</h3>
+                                    </div>
+                                    <p class="text-gray-600 dark:text-gray-400">22 native Tamil speakers with balanced gender representation (11 male, 11 female)</p>
+                                </div>
+                            </div>
+                            
+                            <div class="group relative p-6 bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-emerald-900/20 dark:to-teal-900/20 rounded-2xl border border-emerald-200/50 dark:border-emerald-700/30 transition-all duration-300 hover:scale-105 hover:shadow-lg">
+                                <div class="absolute inset-0 bg-gradient-to-br from-emerald-400/5 to-teal-400/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                <div class="relative z-10">
+                                    <div class="flex items-center mb-3">
+                                        <div class="w-10 h-10 rounded-xl bg-emerald-500 flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300">
+                                            <i class="fas fa-smile-beam text-white"></i>
+                                        </div>
+                                        <h3 class="font-bold text-lg">Emotions</h3>
+                                    </div>
+                                    <p class="text-gray-600 dark:text-gray-400">Five primary emotions: Anger, Happiness, Sadness, Fear, and Neutrality</p>
+                                </div>
+                            </div>
+                            
+                            <div class="group relative p-6 bg-gradient-to-br from-purple-50 to-violet-50 dark:from-purple-900/20 dark:to-violet-900/20 rounded-2xl border border-purple-200/50 dark:border-purple-700/30 transition-all duration-300 hover:scale-105 hover:shadow-lg">
+                                <div class="absolute inset-0 bg-gradient-to-br from-purple-400/5 to-violet-400/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                <div class="relative z-10">
+                                    <div class="flex items-center mb-3">
+                                        <div class="w-10 h-10 rounded-xl bg-purple-500 flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300">
+                                            <i class="fas fa-comment-alt text-white"></i>
+                                        </div>
+                                        <h3 class="font-bold text-lg">Sentences</h3>
+                                    </div>
+                                    <p class="text-gray-600 dark:text-gray-400">19 carefully crafted semantically neutral sentences for unbiased emotion analysis</p>
+                                </div>
+                            </div>
+                            
+                            <div class="group relative p-6 bg-gradient-to-br from-orange-50 to-red-50 dark:from-orange-900/20 dark:to-red-900/20 rounded-2xl border border-orange-200/50 dark:border-orange-700/30 transition-all duration-300 hover:scale-105 hover:shadow-lg">
+                                <div class="absolute inset-0 bg-gradient-to-br from-orange-400/5 to-red-400/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                <div class="relative z-10">
+                                    <div class="flex items-center mb-3">
+                                        <div class="w-10 h-10 rounded-xl bg-orange-500 flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300">
+                                            <i class="fas fa-microphone-alt text-white"></i>
+                                        </div>
+                                        <h3 class="font-bold text-lg">Quality</h3>
+                                    </div>
+                                    <p class="text-gray-600 dark:text-gray-400">Professional recordings captured in controlled soundproof environment</p>
+                                </div>
+                            </div>
+                            
+                            <div class="group relative p-6 bg-gradient-to-br from-pink-50 to-rose-50 dark:from-pink-900/20 dark:to-rose-900/20 rounded-2xl border border-pink-200/50 dark:border-pink-700/30 transition-all duration-300 hover:scale-105 hover:shadow-lg">
+                                <div class="absolute inset-0 bg-gradient-to-br from-pink-400/5 to-rose-400/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                <div class="relative z-10">
+                                    <div class="flex items-center mb-3">
+                                        <div class="w-10 h-10 rounded-xl bg-pink-500 flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300">
+                                            <i class="fas fa-clock text-white"></i>
+                                        </div>
+                                        <h3 class="font-bold text-lg">Duration</h3>
+                                    </div>
+                                    <p class="text-gray-600 dark:text-gray-400">Approximately 48 minutes of high-quality emotional speech data</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                
-                <div class="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-400 p-4 mb-6">
-                    <p class="text-blue-800 dark:text-blue-200">
-                        <i class="fas fa-info-circle mr-2"></i>
-                        Make sure to clone/download the EmoTa dataset separately and point the loader to its root directory.
-                    </p>
-                </div>
-                
-                <h3 class="text-xl font-semibold text-primary dark:text-blue-300 mb-4">
-                    <i class="fas fa-rocket mr-2"></i>Sample Usage
-                </h3>
-                
-                <div class="bg-gray-800 text-gray-200 p-4 rounded-lg overflow-x-auto font-mono text-sm mb-6">
-<pre class="whitespace-pre">from emota_loader import EmoTaDataset
+            </section>
+            
+            <!-- Enhanced Dataset Loader Section -->
+            <section class="mb-16 animate-fade-in" style="animation-delay: 0.4s">
+                <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-500 p-8 md:p-10 border border-white/20 dark:border-gray-700/30 card-hover relative overflow-hidden">
+                    <div class="absolute bottom-0 right-0 w-48 h-48 bg-gradient-to-br from-indigo-400/10 to-blue-400/10 rounded-full blur-3xl"></div>
+                    
+                    <div class="relative z-10">
+                        <div class="flex items-center mb-8">
+                            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-500 to-blue-600 flex items-center justify-center mr-4">
+                                <i class="fas fa-wrench text-white text-xl"></i>
+                            </div>
+                            <h2 class="text-3xl md:text-4xl font-bold gradient-text">Dataset Loader</h2>
+                        </div>
+                        
+                        <p class="mb-6 text-gray-700 dark:text-gray-300 text-lg">
+                            Get started quickly with our Python package available on PyPI:
+                        </p>
+                        
+                        <div class="relative group mb-8">
+                            <div class="absolute inset-0 bg-gradient-to-r from-gray-800 to-gray-900 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-300"></div>
+                            <div class="relative bg-gray-900 dark:bg-gray-800 p-6 rounded-2xl border border-gray-700">
+                                <div class="flex items-center justify-between mb-4">
+                                    <div class="flex space-x-2">
+                                        <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                                        <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                                        <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                                    </div>
+                                    <span class="text-gray-400 text-sm font-mono">Terminal</span>
+                                </div>
+                                <pre class="text-green-400 font-mono text-sm overflow-x-auto">$ pip install emota_loader</pre>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/30 dark:to-indigo-900/30 border-l-4 border-blue-500 p-6 mb-8 rounded-r-2xl">
+                            <div class="flex items-start">
+                                <div class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center mr-4 mt-1 flex-shrink-0">
+                                    <i class="fas fa-info text-white text-sm"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-blue-800 dark:text-blue-200 mb-2">Important Note</h4>
+                                    <p class="text-blue-700 dark:text-blue-300">
+                                        Make sure to clone/download the EmoTa dataset separately and point the loader to its root directory.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-8">
+                            <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-6 flex items-center">
+                                <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center mr-3">
+                                    <i class="fas fa-rocket text-white text-sm"></i>
+                                </div>
+                                Sample Usage
+                            </h3>
+                            
+                            <div class="relative group">
+                                <div class="absolute inset-0 bg-gradient-to-r from-gray-800 to-gray-900 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-300"></div>
+                                <div class="relative bg-gray-900 dark:bg-gray-800 p-6 rounded-2xl border border-gray-700">
+                                    <div class="flex items-center justify-between mb-4">
+                                        <div class="flex space-x-2">
+                                            <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                                            <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                                            <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                                        </div>
+                                        <span class="text-gray-400 text-sm font-mono">Python</span>
+                                    </div>
+                                    <pre class="text-gray-300 font-mono text-sm overflow-x-auto"><code><span class="text-blue-400">from</span> <span class="text-yellow-300">emota_loader</span> <span class="text-blue-400">import</span> <span class="text-yellow-300">EmoTaDataset</span>
 
-dataset = EmoTaDataset(root_dir="path/to/EmoTa").samples # Point to the extracted root folder!
+<span class="text-gray-400"># Point to the extracted root folder!</span>
+<span class="text-green-400">dataset</span> = <span class="text-yellow-300">EmoTaDataset</span>(<span class="text-orange-400">root_dir</span>=<span class="text-red-400">"path/to/EmoTa"</span>).<span class="text-cyan-400">samples</span>
 
-print(f"Loaded {len(dataset)} samples")
+<span class="text-purple-400">print</span>(<span class="text-red-400">f"Loaded </span><span class="text-orange-400">{len(dataset)}</span><span class="text-red-400"> samples"</span>)
 
-sample = dataset[0]
-print(f"  Audio Path      : {sample.audio_path}")
-print(f"  Speaker ID      : {sample.speaker_id}")
-print(f"  Speaker Gender  : {sample.speaker_gender}")
-print(f"  Speaker Age     : {sample.speaker_age}")
-print(f"  Speaker Region  : {sample.speaker_region}")
-print(f"  Sentence ID     : {sample.sentence_id}")
-print(f"  Transcript      : {sample.transcript}")
-print(f"  Emotion         : {sample.emotion}")</pre>
-                </div>
-                
-                <h4 class="text-lg font-semibold text-primary dark:text-blue-300 mb-3">Example Output</h4>
-                
-                <div class="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg font-mono text-sm">
-<pre class="whitespace-pre">Loaded 936 samples
+<span class="text-green-400">sample</span> = <span class="text-green-400">dataset</span>[<span class="text-orange-400">0</span>]
+<span class="text-purple-400">print</span>(<span class="text-red-400">f"  Audio Path      : </span><span class="text-orange-400">{sample.audio_path}</span><span class="text-red-400">"</span>)
+<span class="text-purple-400">print</span>(<span class="text-red-400">f"  Speaker ID      : </span><span class="text-orange-400">{sample.speaker_id}</span><span class="text-red-400">"</span>)
+<span class="text-purple-400">print</span>(<span class="text-red-400">f"  Speaker Gender  : </span><span class="text-orange-400">{sample.speaker_gender}</span><span class="text-red-400">"</span>)
+<span class="text-purple-400">print</span>(<span class="text-red-400">f"  Speaker Age     : </span><span class="text-orange-400">{sample.speaker_age}</span><span class="text-red-400">"</span>)
+<span class="text-purple-400">print</span>(<span class="text-red-400">f"  Speaker Region  : </span><span class="text-orange-400">{sample.speaker_region}</span><span class="text-red-400">"</span>)
+<span class="text-purple-400">print</span>(<span class="text-red-400">f"  Sentence ID     : </span><span class="text-orange-400">{sample.sentence_id}</span><span class="text-red-400">"</span>)
+<span class="text-purple-400">print</span>(<span class="text-red-400">f"  Transcript      : </span><span class="text-orange-400">{sample.transcript}</span><span class="text-red-400">"</span>)
+<span class="text-purple-400">print</span>(<span class="text-red-400">f"  Emotion         : </span><span class="text-orange-400">{sample.emotion}</span><span class="text-red-400">"</span>)</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h4 class="text-xl font-bold text-gray-800 dark:text-gray-200 mb-4 flex items-center">
+                                <i class="fas fa-terminal text-green-500 mr-3"></i>
+                                Example Output
+                            </h4>
+                            
+                            <div class="bg-gray-50 dark:bg-gray-700/50 p-6 rounded-2xl border border-gray-200 dark:border-gray-600">
+                                <pre class="text-gray-800 dark:text-gray-200 font-mono text-sm overflow-x-auto"><code>Loaded 936 samples
 
   Audio Path      : EmoTa/19_18_ang.wav
   Speaker ID      : 19
@@ -214,139 +475,254 @@ print(f"  Emotion         : {sample.emotion}")</pre>
   Speaker Region  : northern
   Sentence ID     : 18
   Transcript      : நான் உன்னை சந்திக்க வேண்டும்.
-  Emotion         : angry</pre>
+  Emotion         : angry</code></pre>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
             
-            <!-- Dataset Structure Section -->
-            <section class="mb-8 bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 p-6">
-                <h2 class="text-2xl md:text-3xl font-semibold text-primary dark:text-blue-300 mb-4">Dataset Structure</h2>
-                
-                <div class="bg-gray-800 text-gray-200 p-4 rounded-lg overflow-x-auto font-mono text-sm">
-<pre class="whitespace-pre">
-EmoTa/
-├── happy/
-├── sad/
-├── angry/
-├── fear/
-└── neutral/
-    └── &lt;spkID&gt;_&lt;senID&gt;_&lt;emo[:3]&gt;.wav
-</pre>
+            <!-- Enhanced Dataset Structure Section -->
+            <section class="mb-16 animate-fade-in" style="animation-delay: 0.6s">
+                <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-500 p-8 md:p-10 border border-white/20 dark:border-gray-700/30 card-hover relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-cyan-400/10 to-blue-400/10 rounded-full blur-2xl"></div>
+                    
+                    <div class="relative z-10">
+                        <div class="flex items-center mb-8">
+                            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center mr-4">
+                                <i class="fas fa-folder-tree text-white text-xl"></i>
+                            </div>
+                            <h2 class="text-3xl md:text-4xl font-bold gradient-text">Dataset Structure</h2>
+                        </div>
+                        
+                        <div class="relative group">
+                            <div class="absolute inset-0 bg-gradient-to-r from-gray-800 to-gray-900 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-300"></div>
+                            <div class="relative bg-gray-900 dark:bg-gray-800 p-6 rounded-2xl border border-gray-700">
+                                <div class="flex items-center justify-between mb-4">
+                                    <div class="flex space-x-2">
+                                        <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                                        <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                                        <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                                    </div>
+                                    <span class="text-gray-400 text-sm font-mono">File Structure</span>
+                                </div>
+                                <pre class="text-gray-300 font-mono text-sm overflow-x-auto"><code><span class="text-blue-400">EmoTa/</span>
+├── <span class="text-yellow-400">happy/</span>
+├── <span class="text-red-400">sad/</span>
+├── <span class="text-orange-400">angry/</span>
+├── <span class="text-purple-400">fear/</span>
+└── <span class="text-green-400">neutral/</span>
+    └── <span class="text-gray-400">&lt;spkID&gt;_&lt;senID&gt;_&lt;emo[:3]&gt;.wav</span></code></pre>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
             
-            <!-- Citation Section -->
-            <section class="mb-8 bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 p-6">
-                <h2 class="text-2xl md:text-3xl font-semibold text-primary dark:text-blue-300 mb-4">Citation</h2>
-                <p class="mb-4 text-gray-700 dark:text-gray-300">If you use <strong class="font-medium">EmoTa: A Tamil Emotional Speech Dataset</strong> in your research, please cite:</p>
-                
-                <div class="bg-gray-800 text-gray-200 p-4 rounded-lg overflow-x-auto font-mono text-sm">
-<pre class="whitespace-pre">
-@inproceedings{thevakumar-etal-2025-emota,
-    title = "{E}mo{T}a: A {T}amil Emotional Speech Dataset",
-    author = "Thevakumar, Jubeerathan  and
+            <!-- Enhanced Citation Section -->
+            <section class="mb-16 animate-fade-in" style="animation-delay: 0.8s">
+                <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-500 p-8 md:p-10 border border-white/20 dark:border-gray-700/30 card-hover relative overflow-hidden">
+                    <div class="absolute bottom-0 right-0 w-40 h-40 bg-gradient-to-br from-emerald-400/10 to-teal-400/10 rounded-full blur-2xl"></div>
+                    
+                    <div class="relative z-10">
+                        <div class="flex items-center mb-8">
+                            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center mr-4">
+                                <i class="fas fa-quote-left text-white text-xl"></i>
+                            </div>
+                            <h2 class="text-3xl md:text-4xl font-bold gradient-text">Citation</h2>
+                        </div>
+                        
+                        <p class="mb-6 text-gray-700 dark:text-gray-300 text-lg">
+                            If you use <strong class="font-semibold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">EmoTa: A Tamil Emotional Speech Dataset</strong> in your research, please cite:
+                        </p>
+                        
+                        <div class="relative group">
+                            <div class="absolute inset-0 bg-gradient-to-r from-gray-800 to-gray-900 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-300"></div>
+                            <div class="relative bg-gray-900 dark:bg-gray-800 p-6 rounded-2xl border border-gray-700">
+                                <div class="flex items-center justify-between mb-4">
+                                    <div class="flex space-x-2">
+                                        <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                                        <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                                        <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                                    </div>
+                                    <span class="text-gray-400 text-sm font-mono">BibTeX</span>
+                                </div>
+                                <pre class="text-gray-300 font-mono text-xs overflow-x-auto"><code><span class="text-blue-400">@inproceedings</span>{<span class="text-yellow-400">thevakumar-etal-2025-emota</span>,
+    <span class="text-green-400">title</span> = <span class="text-red-400">"{E}mo{T}a: A {T}amil Emotional Speech Dataset"</span>,
+    <span class="text-green-400">author</span> = <span class="text-red-400">"Thevakumar, Jubeerathan  and
       Thavarasa, Luxshan  and
       Sivatheepan, Thanikan  and
       Kugarajah, Sajeev  and
-      Thayasivam, Uthayasanker",
-    editor = "Sarveswaran, Kengatharaiyer  and
+      Thayasivam, Uthayasanker"</span>,
+    <span class="text-green-400">editor</span> = <span class="text-red-400">"Sarveswaran, Kengatharaiyer  and
       Vaidya, Ashwini  and
       Krishna Bal, Bal  and
       Shams, Sana  and
-      Thapa, Surendrabikram",
-    booktitle = "Proceedings of the First Workshop on Challenges in Processing South Asian Languages (CHiPSAL 2025)",
-    month = jan,
-    year = "2025",
-    address = "Abu Dhabi, UAE",
-    publisher = "International Committee on Computational Linguistics",
-    url = "https://aclanthology.org/2025.chipsal-1.19/",
-    pages = "193--201",
-    abstract = "This paper introduces EmoTa, the first emotional speech dataset in Tamil, designed to reflect the linguistic diversity of Sri Lankan Tamil speakers. EmoTa comprises 936 recorded utterances from 22 native Tamil speakers (11 male, 11 female), each articulating 19 semantically neutral sentences across five primary emotions: anger, happiness, sadness, fear, and neutrality. To ensure quality, inter-annotator agreement was assessed using Fleiss' Kappa, resulting in a substantial agreement score of 0.74. Initial evaluations using machine learning models, including XGBoost and Random Forest, yielded a high F1-score of 0.91 and 0.90 for emotion classification tasks. By releasing EmoTa, we aim to encourage further exploration of Tamil language processing and the development of innovative models for Tamil Speech Emotion Recognition."
-}
-</pre>
+      Thapa, Surendrabikram"</span>,
+    <span class="text-green-400">booktitle</span> = <span class="text-red-400">"Proceedings of the First Workshop on Challenges in Processing South Asian Languages (CHiPSAL 2025)"</span>,
+    <span class="text-green-400">month</span> = <span class="text-orange-400">jan</span>,
+    <span class="text-green-400">year</span> = <span class="text-red-400">"2025"</span>,
+    <span class="text-green-400">address</span> = <span class="text-red-400">"Abu Dhabi, UAE"</span>,
+    <span class="text-green-400">publisher</span> = <span class="text-red-400">"International Committee on Computational Linguistics"</span>,
+    <span class="text-green-400">url</span> = <span class="text-red-400">"https://aclanthology.org/2025.chipsal-1.19/"</span>,
+    <span class="text-green-400">pages</span> = <span class="text-red-400">"193--201"</span>,
+    <span class="text-green-400">abstract</span> = <span class="text-red-400">"This paper introduces EmoTa, the first emotional speech dataset in Tamil, designed to reflect the linguistic diversity of Sri Lankan Tamil speakers. EmoTa comprises 936 recorded utterances from 22 native Tamil speakers (11 male, 11 female), each articulating 19 semantically neutral sentences across five primary emotions: anger, happiness, sadness, fear, and neutrality. To ensure quality, inter-annotator agreement was assessed using Fleiss' Kappa, resulting in a substantial agreement score of 0.74. Initial evaluations using machine learning models, including XGBoost and Random Forest, yielded a high F1-score of 0.91 and 0.90 for emotion classification tasks. By releasing EmoTa, we aim to encourage further exploration of Tamil language processing and the development of innovative models for Tamil Speech Emotion Recognition."</span>
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
             
-            <!-- Contact Section -->
-            <section class="mb-8 bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 p-6">
-                <h2 class="text-2xl md:text-3xl font-semibold text-primary dark:text-blue-300 mb-4">Contact</h2>
-                
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                    <!-- Contact Card 1 -->
-                    <div class="bg-gray-50 dark:bg-gray-700 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 p-4 text-center">
-                        <h3 class="font-semibold text-lg mb-2">Jubeerathan<br>Thevakumar</h3>
-                        <a href="mailto:jubeerathan.20@cse.mrt.ac.lk" class="text-accent hover:text-accent-hover transition-colors duration-200 block mb-2">
-                            <i class="fas fa-envelope mr-2"></i>jubeerathan.20@cse.mrt.ac.lk
-                        </a>
-                        <a href="https://lk.linkedin.com/in/jubeerathan-thevakumar-87b9b8255" target="_blank" class="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 transition-colors duration-200 inline-flex items-center">
-                            <i class="fab fa-linkedin mr-2"></i>LinkedIn
-                        </a>
-                    </div>
+            <!-- Enhanced Contact Section -->
+            <section class="mb-16 animate-fade-in" style="animation-delay: 1s">
+                <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-500 p-8 md:p-10 border border-white/20 dark:border-gray-700/30 card-hover relative overflow-hidden">
+                    <div class="absolute top-10 right-10 w-48 h-48 bg-gradient-to-br from-pink-400/10 to-rose-400/10 rounded-full blur-3xl"></div>
                     
-                    <!-- Contact Card 2 -->
-                    <div class="bg-gray-50 dark:bg-gray-700 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 p-4 text-center">
-                        <h3 class="font-semibold text-lg mb-2">Luxshan<br>Thavarasa</h3>
-                        <a href="mailto:luxshan.20@cse.mrt.ac.lk" class="text-accent hover:text-accent-hover transition-colors duration-200 block mb-2">
-                            <i class="fas fa-envelope mr-2"></i>luxshan.20@cse.mrt.ac.lk
-                        </a>
-                        <a href="https://lk.linkedin.com/in/lux-thavarasa" target="_blank" class="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 transition-colors duration-200 inline-flex items-center">
-                            <i class="fab fa-linkedin mr-2"></i>LinkedIn
-                        </a>
-                    </div>
-                    
-                    <!-- Contact Card 3 -->
-                    <div class="bg-gray-50 dark:bg-gray-700 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 p-4 text-center">
-                        <h3 class="font-semibold text-lg mb-2">Thanikan<br>Sivatheepan</h3>
-                        <a href="mailto:thanikan.20@cse.mrt.ac.lk" class="text-accent hover:text-accent-hover transition-colors duration-200 block mb-2">
-                            <i class="fas fa-envelope mr-2"></i>thanikan.20@cse.mrt.ac.lk
-                        </a>
-                        <a href="https://lk.linkedin.com/in/sthanikan2000" target="_blank" class="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 transition-colors duration-200 inline-flex items-center">
-                            <i class="fab fa-linkedin mr-2"></i>LinkedIn
-                        </a>
-                    </div>
-                    
-                    <!-- Contact Card 4 -->
-                    <div class="bg-gray-50 dark:bg-gray-700 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 p-4 text-center">
-                        <h3 class="font-semibold text-lg mb-2">Uthayasanker<br>Thayasivam</h3>
-                        <a href="mailto:rtuthaya@cse.mrt.ac.lk" class="text-accent hover:text-accent-hover transition-colors duration-200 block mb-2">
-                            <i class="fas fa-envelope mr-2"></i>rtuthaya@cse.mrt.ac.lk
-                        </a>
-                        <a href="https://lk.linkedin.com/in/rtuthaya" target="_blank" class="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 transition-colors duration-200 inline-flex items-center">
-                            <i class="fab fa-linkedin mr-2"></i>LinkedIn
-                        </a>
+                    <div class="relative z-10">
+                        <div class="flex items-center mb-8">
+                            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-pink-500 to-rose-600 flex items-center justify-center mr-4">
+                                <i class="fas fa-users text-white text-xl"></i>
+                            </div>
+                            <h2 class="text-3xl md:text-4xl font-bold gradient-text">Meet the Team</h2>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                            <!-- Contact Card 1 -->
+                            <div class="group relative bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 p-6 text-center border border-blue-200/50 dark:border-blue-700/30 hover:scale-105 overflow-hidden">
+                                <div class="absolute inset-0 bg-gradient-to-br from-blue-400/5 to-indigo-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                <div class="relative z-10">
+                                    <div class="w-20 h-20 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                                        <i class="fas fa-user text-white text-2xl"></i>
+                                    </div>
+                                    <h3 class="font-bold text-lg mb-2">Jubeerathan<br>Thevakumar</h3>
+                                    <div class="space-y-3">
+                                        <a href="mailto:jubeerathan.20@cse.mrt.ac.lk" class="flex items-center justify-center text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 transition-colors duration-200 text-sm">
+                                            <i class="fas fa-envelope mr-2"></i>
+                                            <span class="truncate">jubeerathan.20@cse.mrt.ac.lk</span>
+                                        </a>
+                                        <a href="https://lk.linkedin.com/in/jubeerathan-thevakumar-87b9b8255" target="_blank" class="inline-flex items-center justify-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-full transition-colors duration-200 text-sm font-medium">
+                                            <i class="fab fa-linkedin mr-2"></i>LinkedIn
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Contact Card 2 -->
+                            <div class="group relative bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-emerald-900/20 dark:to-teal-900/20 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 p-6 text-center border border-emerald-200/50 dark:border-emerald-700/30 hover:scale-105 overflow-hidden">
+                                <div class="absolute inset-0 bg-gradient-to-br from-emerald-400/5 to-teal-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                <div class="relative z-10">
+                                    <div class="w-20 h-20 rounded-full bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                                        <i class="fas fa-user text-white text-2xl"></i>
+                                    </div>
+                                    <h3 class="font-bold text-lg mb-2">Luxshan<br>Thavarasa</h3>
+                                    <div class="space-y-3">
+                                        <a href="mailto:luxshan.20@cse.mrt.ac.lk" class="flex items-center justify-center text-emerald-600 hover:text-emerald-800 dark:text-emerald-400 dark:hover:text-emerald-300 transition-colors duration-200 text-sm">
+                                            <i class="fas fa-envelope mr-2"></i>
+                                            <span class="truncate">luxshan.20@cse.mrt.ac.lk</span>
+                                        </a>
+                                        <a href="https://lk.linkedin.com/in/lux-thavarasa" target="_blank" class="inline-flex items-center justify-center px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-full transition-colors duration-200 text-sm font-medium">
+                                            <i class="fab fa-linkedin mr-2"></i>LinkedIn
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Contact Card 3 -->
+                            <div class="group relative bg-gradient-to-br from-purple-50 to-violet-50 dark:from-purple-900/20 dark:to-violet-900/20 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 p-6 text-center border border-purple-200/50 dark:border-purple-700/30 hover:scale-105 overflow-hidden">
+                                <div class="absolute inset-0 bg-gradient-to-br from-purple-400/5 to-violet-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                <div class="relative z-10">
+                                    <div class="w-20 h-20 rounded-full bg-gradient-to-br from-purple-500 to-violet-600 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                                        <i class="fas fa-user text-white text-2xl"></i>
+                                    </div>
+                                    <h3 class="font-bold text-lg mb-2">Thanikan<br>Sivatheepan</h3>
+                                    <div class="space-y-3">
+                                        <a href="mailto:thanikan.20@cse.mrt.ac.lk" class="flex items-center justify-center text-purple-600 hover:text-purple-800 dark:text-purple-400 dark:hover:text-purple-300 transition-colors duration-200 text-sm">
+                                            <i class="fas fa-envelope mr-2"></i>
+                                            <span class="truncate">thanikan.20@cse.mrt.ac.lk</span>
+                                        </a>
+                                        <a href="https://lk.linkedin.com/in/sthanikan2000" target="_blank" class="inline-flex items-center justify-center px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-full transition-colors duration-200 text-sm font-medium">
+                                            <i class="fab fa-linkedin mr-2"></i>LinkedIn
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Contact Card 4 -->
+                            <div class="group relative bg-gradient-to-br from-orange-50 to-red-50 dark:from-orange-900/20 dark:to-red-900/20 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 p-6 text-center border border-orange-200/50 dark:border-orange-700/30 hover:scale-105 overflow-hidden">
+                                <div class="absolute inset-0 bg-gradient-to-br from-orange-400/5 to-red-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                <div class="relative z-10">
+                                    <div class="w-20 h-20 rounded-full bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                                        <i class="fas fa-user-tie text-white text-2xl"></i>
+                                    </div>
+                                    <h3 class="font-bold text-lg mb-2">Uthayasanker<br>Thayasivam</h3>
+                                    <div class="space-y-3">
+                                        <a href="mailto:rtuthaya@cse.mrt.ac.lk" class="flex items-center justify-center text-orange-600 hover:text-orange-800 dark:text-orange-400 dark:hover:text-orange-300 transition-colors duration-200 text-sm">
+                                            <i class="fas fa-envelope mr-2"></i>
+                                            <span class="truncate">rtuthaya@cse.mrt.ac.lk</span>
+                                        </a>
+                                        <a href="https://lk.linkedin.com/in/rtuthaya" target="_blank" class="inline-flex items-center justify-center px-4 py-2 bg-orange-600 hover:bg-orange-700 text-white rounded-full transition-colors duration-200 text-sm font-medium">
+                                            <i class="fab fa-linkedin mr-2"></i>LinkedIn
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
         </main>
         
-        <!-- Footer -->
-        <footer class="bg-gray-100 dark:bg-gray-800 py-6 border-t border-gray-200 dark:border-gray-700">
-            <div class="container mx-auto px-4 text-center">
-                <p class="text-gray-600 dark:text-gray-400">© 2025 EmoTa Dataset. All rights reserved.</p>
-                <div class="mt-4 flex justify-center space-x-4">
-                    <a href="https://github.com/aaivu/EmoTa" target="_blank" class="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300">
-                        <i class="fab fa-github text-xl"></i>
+        <!-- Enhanced Footer -->
+        <footer class="relative bg-gradient-to-r from-gray-800 via-gray-900 to-black dark:from-gray-900 dark:via-black dark:to-gray-900 py-12 border-t border-gray-700/50 overflow-hidden">
+            <!-- Decorative elements -->
+            <div class="absolute inset-0">
+                <div class="absolute top-0 left-1/4 w-32 h-32 bg-blue-500/5 rounded-full blur-2xl"></div>
+                <div class="absolute bottom-0 right-1/4 w-40 h-40 bg-purple-500/5 rounded-full blur-3xl"></div>
+            </div>
+            
+            <div class="container mx-auto px-4 text-center relative z-10">
+                <div class="mb-8">
+                    <h3 class="text-2xl font-bold text-white mb-2">EmoTa Dataset</h3>
+                    <p class="text-gray-400 max-w-md mx-auto">Advancing Tamil speech emotion recognition research through comprehensive linguistic diversity.</p>
+                </div>
+                
+                <div class="flex justify-center space-x-6 mb-8">
+                    <a href="https://github.com/aaivu/EmoTa" target="_blank" class="group relative p-4 rounded-full bg-gray-800/50 backdrop-blur-md border border-gray-700/50 text-gray-400 hover:text-white hover:border-blue-500/50 transition-all duration-300">
+                        <i class="fab fa-github text-2xl"></i>
+                        <div class="absolute inset-0 rounded-full bg-blue-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </a>
-                    <a href="https://aclanthology.org/2025.chipsal-1.19/" target="_blank" class="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300">
-                        <i class="fas fa-file-alt text-xl"></i>
+                    <a href="https://aclanthology.org/2025.chipsal-1.19/" target="_blank" class="group relative p-4 rounded-full bg-gray-800/50 backdrop-blur-md border border-gray-700/50 text-gray-400 hover:text-white hover:border-purple-500/50 transition-all duration-300">
+                        <i class="fas fa-file-alt text-2xl"></i>
+                        <div class="absolute inset-0 rounded-full bg-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </a>
+                    <a href="https://rtuthaya.staff.uom.lk/resources/dataset/43" target="_blank" class="group relative p-4 rounded-full bg-gray-800/50 backdrop-blur-md border border-gray-700/50 text-gray-400 hover:text-white hover:border-green-500/50 transition-all duration-300">
+                        <i class="fas fa-download text-2xl"></i>
+                        <div class="absolute inset-0 rounded-full bg-green-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </a>
+                </div>
+                
+                <div class="text-gray-500 text-sm">
+                    <p>© 2025 EmoTa Dataset. All rights reserved.</p>
+                    <p class="mt-2">Developed with ❤️ for the Tamil language research community</p>
                 </div>
             </div>
         </footer>
     </div>
     
-    <!-- Dark mode toggle script -->
+    <!-- Enhanced Dark mode toggle script -->
     <script>
-        // Check for saved theme preference or prefer-color-scheme
         const darkModeToggle = document.getElementById('darkModeToggle');
         
-        // Function to set theme
+        // Function to set theme with smooth transition
         function setTheme(isDark) {
+            const html = document.documentElement;
+            
             if (isDark) {
-                document.documentElement.classList.add('dark');
+                html.classList.add('dark');
                 localStorage.theme = 'dark';
             } else {
-                document.documentElement.classList.remove('dark');
+                html.classList.remove('dark');
                 localStorage.theme = 'light';
             }
         }
@@ -358,10 +734,115 @@ EmoTa/
             setTheme(false);
         }
         
-        // Toggle theme on button click
+        // Toggle theme on button click with animation
         darkModeToggle.addEventListener('click', () => {
             const isDark = document.documentElement.classList.contains('dark');
             setTheme(!isDark);
+            
+            // Add click animation
+            darkModeToggle.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                darkModeToggle.style.transform = 'scale(1)';
+            }, 150);
+        });
+        
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all sections for scroll animations
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(30px)';
+                section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(section);
+            });
+            
+            // Add smooth scrolling behavior
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+            
+            // Add copy functionality to code blocks
+            const codeBlocks = document.querySelectorAll('pre code');
+            codeBlocks.forEach(block => {
+                const button = document.createElement('button');
+                button.className = 'absolute top-4 right-4 px-3 py-1 bg-gray-700 hover:bg-gray-600 text-white text-xs rounded-md transition-colors duration-200 opacity-0 group-hover:opacity-100';
+                button.innerHTML = '<i class="fas fa-copy mr-1"></i>Copy';
+                
+                const container = block.closest('.relative');
+                if (container) {
+                    container.appendChild(button);
+                    
+                    button.addEventListener('click', () => {
+                        navigator.clipboard.writeText(block.textContent).then(() => {
+                            button.innerHTML = '<i class="fas fa-check mr-1"></i>Copied!';
+                            button.className = button.className.replace('bg-gray-700 hover:bg-gray-600', 'bg-green-600 hover:bg-green-500');
+                            
+                            setTimeout(() => {
+                                button.innerHTML = '<i class="fas fa-copy mr-1"></i>Copy';
+                                button.className = button.className.replace('bg-green-600 hover:bg-green-500', 'bg-gray-700 hover:bg-gray-600');
+                            }, 2000);
+                        });
+                    });
+                }
+            });
+            
+            // Add parallax effect to header
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                const header = document.querySelector('header');
+                if (header) {
+                    const rate = scrolled * -0.5;
+                    header.style.transform = `translateY(${rate}px)`;
+                }
+            });
+            
+            // Add loading animation
+            const body = document.body;
+            body.style.opacity = '0';
+            body.style.transition = 'opacity 0.5s ease';
+            
+            setTimeout(() => {
+                body.style.opacity = '1';
+            }, 100);
+        });
+        
+        // Add hover effects for feature cards
+        document.addEventListener('DOMContentLoaded', () => {
+            const featureCards = document.querySelectorAll('.card-hover');
+            
+            featureCards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.style.transform = 'translateY(-8px) scale(1.02)';
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'translateY(0) scale(1)';
+                });
+            });
         });
     </script>
 </body>
