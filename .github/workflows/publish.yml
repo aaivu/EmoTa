@@ -32,7 +32,7 @@ jobs:
       - name: Build the package inside emota_loader/
         run: |
           cd emota_loader
-          uv run -m build
+          uv build
 
       - name: Publish to PyPI via OIDC
         uses: pypa/gh-action-pypi-publish@release/v1
