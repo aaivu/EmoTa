@@ -26,8 +26,8 @@ jobs:
       - name: Install uv (fast Python package manager)
         uses: yezz123/setup-uv@v1
 
-      - name: Install build tool
-        run: uv pip install build
+      - name: Create virtual environment
+        run: uv venv
 
       - name: Build the package inside emota_loader/
         run: |
