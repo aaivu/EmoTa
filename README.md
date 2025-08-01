@@ -76,6 +76,55 @@ If you use **EmoTa: A Tamil Emotional Speech Dataset** in your research, please 
 Paper: [view](https://aclanthology.org/2025.chipsal-1.19.pdf)
 
 ---
+## 🔧 Dataset loader
+
+You can install the package from PyPI using:
+
+```bash
+pip install emota_loader
+````
+
+> Make sure to clone/download the [EmoTa dataset](https://github.com/aaivu/EmoTa) separately and point the loader to its root directory.
+
+---
+
+## 🚀 Sample Usage
+
+```python
+from emota_loader import EmoTaDataset
+
+dataset = EmoTaDataset(root_dir="path/to/EmoTa").samples # Point to the extracted root folder!
+
+print(f"Loaded {len(dataset)} samples")
+
+sample = dataset[0]
+print(f"  Audio Path      : {sample.audio_path}")
+print(f"  Speaker ID      : {sample.speaker_id}")
+print(f"  Speaker Gender  : {sample.speaker_gender}")
+print(f"  Speaker Age     : {sample.speaker_age}")
+print(f"  Speaker Region  : {sample.speaker_region}")
+print(f"  Sentence ID     : {sample.sentence_id}")
+print(f"  Transcript      : {sample.transcript}")
+print(f"  Emotion         : {sample.emotion}")
+```
+
+### Example Output
+
+```
+Loaded 936 samples
+
+  Audio Path      : EmoTa/19_18_ang.wav
+  Speaker ID      : 19
+  Speaker Gender  : male
+  Speaker Age     : 25
+  Speaker Region  : northern
+  Sentence ID     : 18
+  Transcript      : நான் உன்னை சந்திக்க வேண்டும்.
+  Emotion         : angry
+```
+
+
+--
 
 ## Contact  
 
