@@ -84,7 +84,7 @@ You can install the package from PyPI using:
 pip install emota_loader
 ````
 
-> Make sure to clone/download the [EmoTa dataset](https://github.com/aaivu/EmoTa) separately and point the loader to its root directory.
+> Make sure to download the [EmoTa dataset](https://rtuthaya.staff.uom.lk/contact-for-resources) separately and point the loader to its root directory.
 
 ---
 
@@ -93,7 +93,8 @@ pip install emota_loader
 ```python
 from emota_loader import EmoTaDataset
 
-dataset = EmoTaDataset(root_dir="path/to/EmoTa").samples # Point to the extracted root folder!
+# Point to the extracted root folder
+dataset = EmoTaDataset(root_dir="path/to/EmoTa").samples 
 
 print(f"Loaded {len(dataset)} samples")
 
